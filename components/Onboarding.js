@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, FlatList, Animated } from 'react-native';
 
 import OnboardingItem from './OnboardingItem';
+import Paginator from './Paginator';
 import slides from '../slides';
 
 export default Onboarding = () => {
@@ -24,7 +25,7 @@ export default Onboarding = () => {
                     data={slides}
                     renderItem={({ item }) => <OnboardingItem item={item} />}
                     horizontal
-                    showsVerticalScrollIndicator
+                    showsHorizontalScrollIndicator={false}
                     pagingEnabled
                     bounces={false}
                     keyExtractor={(item) => item.id}
@@ -38,6 +39,8 @@ export default Onboarding = () => {
                     ref={slidesRef}
                 />
             </View>
+
+            <Paginator data={slides} scrollX={scrollX} />
         </View>
     )
 }
